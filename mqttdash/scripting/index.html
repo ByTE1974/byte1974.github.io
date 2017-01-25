@@ -1,0 +1,14 @@
+<h1><strong>MQTT Dash</strong> scripting manual (JavaScript)</h1>
+
+<hr />
+<h2>Text metric &rArr;&nbsp;<em><strong>On Receive</strong></em> handler called when payload received for this particular metric. You have access to the following from the script:</h2>
+
+<p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em> to <em><strong>topic</strong></em> with specified <em><strong>retained</strong></em> flag and <em><strong>qos</strong></em>.</p>
+
+<p><em><strong>metric.data</strong></em> - Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>.</p>
+
+<p><em><strong>metric.payload</strong></em> - Received raw payload string. You can modify/transform it before it&#39;ll be processed and displayed.</p>
+
+<p><em><strong>metric.topic</strong></em> - Topic, to which payload was received.</p>
+
+<p>&nbsp;</p>
