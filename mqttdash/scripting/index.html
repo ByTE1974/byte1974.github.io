@@ -1,14 +1,53 @@
 <h1><strong>MQTT Dash</strong> scripting manual (JavaScript)</h1>
 
 <hr />
-<h2>Text metric &rArr;&nbsp;<em><strong>On Receive</strong></em> handler called when payload received for this particular metric. You have access to the following from the script:</h2>
+<h2>Text metric &rArr;&nbsp;<em><strong>On Receive</strong></em> handler called when payload received for this particular metric. You can use:</h2>
 
-<p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em> to <em><strong>topic</strong></em> with specified <em><strong>retained</strong></em> flag and <em><strong>qos</strong></em>.</p>
+<p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
 
-<p><em><strong>metric.data</strong></em> - Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>.</p>
+<p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
-<p><em><strong>metric.payload</strong></em> - Received raw payload string. You can modify/transform it before it&#39;ll be processed and displayed.</p>
+<p><em><strong>event.payload</strong></em> - (String) Received raw payload string. You can modify/transform it before it&#39;ll be processed and displayed.</p>
 
-<p><em><strong>metric.topic</strong></em> - Topic, to which payload was received.</p>
+<p><em><strong>event.topic</strong></em> - (String) Topic, to which payload was received.</p>
 
-<p>&nbsp;</p>
+<p>Example:</p>
+
+<p><code>if (parseInt(event.payload) &gt; 90) {</code></p>
+
+<p><code>&nbsp; &nbsp; app.publish(&#39;messages/alert&#39;, &#39;Boiler temperature is too high: &#39; + event.payload);</code></p>
+
+<p><code>}</code></p>
+
+<hr />
+<h2>Text metric &rArr;&nbsp;<em><strong>On Display</strong></em> handler called when tile needs to be updated/re-rendered, e.g. contents or last activity time changed. Usually it happens once per second for all visible tiles.&nbsp;You can use:</h2>
+
+<p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
+
+<p><em><strong>event.getLastPayload()</strong></em> - (String) Returns last received raw payload.</p>
+
+<p><em><strong>event.getSecondsSinceLastActivity()</strong></em> - (Integer) Returns number of seconds, elapsed since last payload was received.</p>
+
+<p><em><strong>event.name</strong></em> - (String) Text to be shown at the top of tile.</p>
+
+<p><em><strong>event.text</strong></em> - (String) Main text to display.</p>
+
+<p><em><strong>event.textColor</strong></em> - (HEX String) Main text color. E.g. &quot;<em><strong>#ffffcc</strong></em>&quot;.</p>
+
+<p><em><strong>event.lastActivityString</strong></em> - (String) Text to display at the bottom of tile.</p>
+
+<p>Example:</p>
+
+<p><code>if (parseInt(event.getLastPayload()) &gt; 90) {</code></p>
+
+<p><code>&nbsp; &nbsp; event.text = &quot;HOT&quot;;</code></p>
+
+<p><code>&nbsp; &nbsp; event.textColor = &quot;#ffcccc&quot;;</code></p>
+
+<p><code>} else {</code></p>
+
+<p><code>&nbsp; &nbsp; event.textColor = &quot;#ffffff&quot;;</code></p>
+
+<p><code>}</code></p>
