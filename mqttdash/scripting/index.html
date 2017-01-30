@@ -1,9 +1,9 @@
 <h1><strong>MQTT Dash</strong> scripting manual (JavaScript)</h1>
 
 <hr />
-<h2>Text metric &rArr;&nbsp;<em><strong>On Receive</strong></em> handler called when payload received for this particular metric. You can use:</h2>
+<h2>Text metric &rArr;&nbsp;<em><strong>On Receive</strong></em> handler called when payload received for the metric. You can use:</h2>
 
-<p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+<p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
@@ -15,7 +15,7 @@
 
 <p><code>if (parseInt(event.payload) &gt; 90) {</code></p>
 
-<p><code>&nbsp; &nbsp; app.publish(&#39;messages/alert&#39;, &#39;Boiler temperature is too high: &#39; + event.payload);</code></p>
+<p><code>&nbsp; &nbsp; app.publish(&#39;messages/alert&#39;, &#39;HOT&#39;);</code></p>
 
 <p><code>}</code></p>
 
@@ -26,28 +26,410 @@
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
-<p><em><strong>event.getLastPayload()</strong></em> - (String) Returns last received raw payload.</p>
-
 <p><em><strong>event.getSecondsSinceLastActivity()</strong></em> - (Integer) Returns number of seconds, elapsed since last payload was received.</p>
 
+<p><em><strong>event.lastActivityString</strong></em> - (String) Text to display at the bottom of tile.</p>
+
 <p><em><strong>event.name</strong></em> - (String) Text to be shown at the top of tile.</p>
+
+<p><em><strong>event.getLastPayload()</strong></em> - (String) Returns last received raw payload.</p>
 
 <p><em><strong>event.text</strong></em> - (String) Main text to display.</p>
 
 <p><em><strong>event.textColor</strong></em> - (HEX String) Main text color. E.g. &quot;<em><strong>#ffffcc</strong></em>&quot;.</p>
 
+<p>Example:</p>
+
+<p><code>if (parseInt(event.getLastPayload()) &gt; 90) {</code></p>
+
+<p><code>&nbsp; &nbsp; event.text = &#39;HOT&#39;;</code></p>
+
+<p><code>&nbsp; &nbsp; event.textColor = &#39;#ffcccc&#39;;</code></p>
+
+<p><code>} else {</code></p>
+
+<p><code>&nbsp; &nbsp; event.textColor = &#39;#ffffff&#39;;</code></p>
+
+<p><code>}</code></p>
+
+<hr />
+<h2>Text metric &rArr;&nbsp;<em><strong>On Click</strong></em> handler called when user taps/clicks on the tile. You can use:</h2>
+
+<p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
+
+<p><em><strong>event.preventDefault</strong></em>&nbsp;- (Boolean) False by default. If True, default tap event behavoiur will be disabled.</p>
+
+<p>Example:</p>
+
+<p><code>event.preventDefault = true;</code></p>
+
+<p><code>if (event.data) {</code></p>
+
+<p><code>&nbsp; &nbsp; app.publish(&#39;messages/alert&#39;, event.data);</code></p>
+
+<p><code>}</code></p>
+
+<hr />
+<h2>Switch metric &rArr;&nbsp;<em><strong>On Receive</strong></em> handler called when payload received for the metric. You can use:</h2>
+
+<p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
+
+<p><em><strong>event.payload</strong></em> - (String) Received raw payload string. You can modify/transform it before it&#39;ll be processed and displayed.</p>
+
+<p><em><strong>event.topic</strong></em> - (String) Topic, to which payload was received.</p>
+
+<p>Example:</p>
+
+<p><code>if (event.payload&nbsp;==&nbsp;&#39;1&#39;) {</code></p>
+
+<p><code>&nbsp; &nbsp; app.publish(&#39;messages/alert&#39;, &#39;ON&#39;);</code></p>
+
+<p><code>} else {</code></p>
+
+<p><code>&nbsp; &nbsp; app.publish(&#39;messages/alert&#39;, &#39;OFF&#39;);</code></p>
+
+<p><code>}</code></p>
+
+<hr />
+<h2>Switch metric &rArr;&nbsp;<em><strong>On Display</strong></em> handler called when tile needs to be updated/re-rendered, e.g. contents or last activity time changed. Usually it happens once per second for all visible tiles.&nbsp;You can use:</h2>
+
+<p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
+
+<p><em><strong>event.getSecondsSinceLastActivity()</strong></em> - (Integer) Returns number of seconds, elapsed since last payload was received.</p>
+
 <p><em><strong>event.lastActivityString</strong></em> - (String) Text to display at the bottom of tile.</p>
+
+<p><em><strong>event.name</strong></em> - (String) Text to be shown at the top of tile.</p>
+
+<p><em><strong>event.getLastPayload()</strong></em> - (String) Returns last received raw payload.</p>
+
+<p><em><strong>event.on</strong></em> - (Boolean) You can set this property in order to change the switch status to ON or OFF.</p>
+
+<p><em><strong>event.iconColor</strong></em> - (HEX String) Icon&nbsp;color. E.g. &quot;<em><strong>#ffffcc</strong></em>&quot;.</p>
+
+<p>Example:</p>
+
+<p><code>if (parseInt(event.getLastPayload()) ==&nbsp;1) {</code></p>
+
+<p><code>&nbsp; &nbsp; event.iconColor = &#39;#ffcccc&#39;;</code></p>
+
+<p><code>} else {</code></p>
+
+<p><code>&nbsp; &nbsp; event.iconColor = &#39;#ffffff&#39;;</code></p>
+
+<p><code>}</code></p>
+
+<hr />
+<h2>Switch metric &rArr;&nbsp;<em><strong>On Click</strong></em> handler called when user taps/clicks on the tile. You can use:</h2>
+
+<p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
+
+<p><em><strong>event.preventDefault</strong></em>&nbsp;- (Boolean) False by default. If True, default tap event behavoiur will be disabled.</p>
+
+<p>Example:</p>
+
+<p><code>event.preventDefault = true;</code></p>
+
+<p><code>if (event.data) {</code></p>
+
+<p><code>&nbsp; &nbsp; app.publish(&#39;messages/alert&#39;, event.data);</code></p>
+
+<p><code>}</code></p>
+
+<hr />
+<h2>Range/progress metric &rArr;&nbsp;<em><strong>On Receive</strong></em> handler called when payload received for the metric. You can use:</h2>
+
+<p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
+
+<p><em><strong>event.payload</strong></em> - (String) Received raw payload string. You can modify/transform it before it&#39;ll be processed and displayed.</p>
+
+<p><em><strong>event.topic</strong></em> - (String) Topic, to which payload was received.</p>
+
+<p>Example:</p>
+
+<p><code>if (parseInt(event.payload) &gt; 90) {</code></p>
+
+<p><code>&nbsp; &nbsp; app.publish(&#39;messages/alert&#39;, &#39;TOO HOT&#39;);</code></p>
+
+<p><code>} else {</code></p>
+
+<p><code>&nbsp; &nbsp; app.publish(&#39;messages/status&#39;, &#39;NORMAL&#39;);</code></p>
+
+<p><code>}</code></p>
+
+<hr />
+<h2>Range/progress metric &rArr;&nbsp;<em><strong>On Display</strong></em> handler called when tile needs to be updated/re-rendered, e.g. contents or last activity time changed. Usually it happens once per second for all visible tiles.&nbsp;You can use:</h2>
+
+<p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
+
+<p><em><strong>event.getSecondsSinceLastActivity()</strong></em> - (Integer) Returns number of seconds, elapsed since last payload was received.</p>
+
+<p><em><strong>event.lastActivityString</strong></em> - (String) Text to display at the bottom of tile.</p>
+
+<p><em><strong>event.name</strong></em> - (String) Text to be shown at the top of tile.</p>
+
+<p><em><strong>event.getLastPayload()</strong></em> - (String) Returns last received raw payload.</p>
+
+<p><em><strong>event.progressColor</strong></em> - (HEX String) Main text color. E.g. &quot;<em><strong>#ffffcc</strong></em>&quot;.</p>
 
 <p>Example:</p>
 
 <p><code>if (parseInt(event.getLastPayload()) &gt; 90) {</code></p>
 
-<p><code>&nbsp; &nbsp; event.text = &quot;HOT&quot;;</code></p>
-
-<p><code>&nbsp; &nbsp; event.textColor = &quot;#ffcccc&quot;;</code></p>
+<p><code>&nbsp; &nbsp; event.progressColor = &#39;#ffcccc&#39;;</code></p>
 
 <p><code>} else {</code></p>
 
-<p><code>&nbsp; &nbsp; event.textColor = &quot;#ffffff&quot;;</code></p>
+<p><code>&nbsp; &nbsp; event.progressColor = &#39;#ffffff&#39;;</code></p>
+
+<p><code>}</code></p>
+
+<hr />
+<h2>Range/progress metric &rArr;&nbsp;<em><strong>On Click</strong></em> handler called when user taps/clicks on the tile. You can use:</h2>
+
+<p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
+
+<p><em><strong>event.preventDefault</strong></em>&nbsp;- (Boolean) False by default. If True, default tap event behavoiur will be disabled.</p>
+
+<p>Example:</p>
+
+<p><code>event.preventDefault = true;</code></p>
+
+<p><code>if (event.data) {</code></p>
+
+<p><code>&nbsp; &nbsp; app.publish(&#39;messages/status&#39;, event.data);</code></p>
+
+<p><code>}</code></p>
+
+<hr />
+<h2>Multi choice metric &rArr;&nbsp;<em><strong>On Receive</strong></em> handler called when payload received for the metric. You can use:</h2>
+
+<p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
+
+<p><em><strong>event.payload</strong></em> - (String) Received raw payload string. You can modify/transform it before it&#39;ll be processed and displayed.</p>
+
+<p><em><strong>event.topic</strong></em> - (String) Topic, to which payload was received.</p>
+
+<p>Example:</p>
+
+<p><code>if (parseInt(event.payload) &gt; 90) {</code></p>
+
+<p><code>&nbsp; &nbsp; app.publish(&#39;messages/alert&#39;, &#39;HOT&#39;);</code></p>
+
+<p><code>}</code></p>
+
+<hr />
+<h2>Multi choice metric &rArr;&nbsp;<em><strong>On Display</strong></em> handler called when tile needs to be updated/re-rendered, e.g. contents or last activity time changed. Usually it happens once per second for all visible tiles.&nbsp;You can use:</h2>
+
+<p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
+
+<p><em><strong>event.getSecondsSinceLastActivity()</strong></em> - (Integer) Returns number of seconds, elapsed since last payload was received.</p>
+
+<p><em><strong>event.lastActivityString</strong></em> - (String) Text to display at the bottom of tile.</p>
+
+<p><em><strong>event.name</strong></em> - (String) Text to be shown at the top of tile.</p>
+
+<p><em><strong>event.getLastPayload()</strong></em> - (String) Returns last received raw payload.</p>
+
+<p><em><strong>event.text</strong></em> - (String) Main text to display.</p>
+
+<p><em><strong>event.textColor</strong></em> - (HEX String) Main text color. E.g. &quot;<em><strong>#ffffcc</strong></em>&quot;.</p>
+
+<p>Example:</p>
+
+<p><code>if (parseInt(event.getLastPayload()) &gt; 90) {</code></p>
+
+<p><code>&nbsp; &nbsp; event.textColor = &#39;#ffcccc&#39;;</code></p>
+
+<p><code>} else {</code></p>
+
+<p><code>&nbsp; &nbsp; event.textColor = &#39;#ffffff&#39;;</code></p>
+
+<p><code>}</code></p>
+
+<hr />
+<h2>Multi choice metric &rArr;&nbsp;<em><strong>On Click</strong></em> handler called when user taps/clicks on the tile. You can use:</h2>
+
+<p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
+
+<p><em><strong>event.preventDefault</strong></em>&nbsp;- (Boolean) False by default. If True, default tap event behavoiur will be disabled.</p>
+
+<p>Example:</p>
+
+<p><code>event.preventDefault = true;</code></p>
+
+<p><code>if (event.data) {</code></p>
+
+<p><code>&nbsp; &nbsp; app.publish(&#39;messages/alert&#39;, event.data);</code></p>
+
+<p><code>}</code></p>
+
+<hr />
+<h2>Image metric &rArr;&nbsp;<em><strong>On Receive</strong></em> handler called when payload received for the metric. You can use:</h2>
+
+<p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
+
+<p><em><strong>event.payload</strong></em> - (String) Received raw payload string. You can modify/transform it before it&#39;ll be processed and displayed.</p>
+
+<p><em><strong>event.topic</strong></em> - (String) Topic, to which payload was received.</p>
+
+<p>Example:</p>
+
+<p><code>if (parseInt(event.payload) == &#39;rain&#39;) {</code></p>
+
+<p><code>&nbsp; &nbsp; event.payload = &#39;http://example.com/rainy.png&#39;;</code></p>
+
+<p><code>} else&nbsp;if (parseInt(event.payload) == &#39;sun&#39;) {</code></p>
+
+<p><code>&nbsp; &nbsp; event.payload = &#39;http://example.com/sunny.png&#39;;</code></p>
+
+<p><code>}</code></p>
+
+<hr />
+<h2>Image metric &rArr;&nbsp;<em><strong>On Display</strong></em> handler called when tile needs to be updated/re-rendered, e.g. contents or last activity time changed. Usually it happens once per second for all visible tiles.&nbsp;You can use:</h2>
+
+<p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
+
+<p><em><strong>event.getSecondsSinceLastActivity()</strong></em> - (Integer) Returns number of seconds, elapsed since last payload was received.</p>
+
+<p><em><strong>event.lastActivityString</strong></em> - (String) Text to display at the bottom of tile.</p>
+
+<p><em><strong>event.name</strong></em> - (String) Text to be shown at the top of tile.</p>
+
+<p><em><strong>event.getLastPayload()</strong></em> - (String) Returns last received raw payload.</p>
+
+<p><em><strong>event.url</strong></em>&nbsp;- (String) Image URL to download and display.</p>
+
+<p>Example:</p>
+
+<p><code>if (event.getLastPayload()&nbsp;== &#39;&#39;) {</code></p>
+
+<p><code>&nbsp; &nbsp; event.url&nbsp;= &#39;http://example.com/rainy.png&#39;;</code></p>
+
+<p><code>} else {</code></p>
+
+<p><code>&nbsp; &nbsp; event.url&nbsp;= &#39;http://example.com/sunny.png&#39;;</code></p>
+
+<p><code>}</code></p>
+
+<hr />
+<h2>Image metric &rArr;&nbsp;<em><strong>On Click</strong></em> handler called when user taps/clicks on the tile. You can use:</h2>
+
+<p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
+
+<p><em><strong>event.preventDefault</strong></em>&nbsp;- (Boolean) False by default. If True, default tap event behavoiur will be disabled.</p>
+
+<p>Example:</p>
+
+<p><code>event.preventDefault = true;</code></p>
+
+<p><code>if (event.data) {</code></p>
+
+<p><code>&nbsp; &nbsp; app.publish(&#39;messages/alert&#39;, event.data);</code></p>
+
+<p><code>}</code></p>
+
+<hr />
+<h2>Color metric &rArr;&nbsp;<em><strong>On Receive</strong></em> handler called when payload received for the metric. You can use:</h2>
+
+<p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
+
+<p><em><strong>event.payload</strong></em> - (String) Received raw payload string. You can modify/transform it before it&#39;ll be processed and displayed.</p>
+
+<p><em><strong>event.topic</strong></em> - (String) Topic, to which payload was received.</p>
+
+<p>Example:</p>
+
+<p><code>if (event.payload&nbsp;== &#39;red&#39;) {</code></p>
+
+<p><code>&nbsp; &nbsp; event.payload = &#39;#FF0000&#39;;</code></p>
+
+<p><code>} else&nbsp;if (event.payload&nbsp;== &#39;green&#39;) {</code></p>
+
+<p><code>&nbsp; &nbsp; event.payload = &#39;#2AFF00&#39;;</code></p>
+
+<p><code>} else&nbsp;if (event.payload&nbsp;== &#39;blue&#39;) {</code></p>
+
+<p><code>&nbsp; &nbsp; event.payload = &#39;#002BFF&#39;;</code></p>
+
+<p><code>}</code></p>
+
+<hr />
+<h2>Color metric &rArr;&nbsp;<em><strong>On Display</strong></em> handler called when tile needs to be updated/re-rendered, e.g. contents or last activity time changed. Usually it happens once per second for all visible tiles.&nbsp;You can use:</h2>
+
+<p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
+
+<p><em><strong>event.getSecondsSinceLastActivity()</strong></em> - (Integer) Returns number of seconds, elapsed since last payload was received.</p>
+
+<p><em><strong>event.lastActivityString</strong></em> - (String) Text to display at the bottom of tile.</p>
+
+<p><em><strong>event.name</strong></em> - (String) Text to be shown at the top of tile.</p>
+
+<p><em><strong>event.getLastPayload()</strong></em> - (String) Returns last received raw payload.</p>
+
+<p><em><strong>event.color</strong></em> - (HEX String) Icon color. E.g. &quot;<em><strong>#ffffcc</strong></em>&quot;.</p>
+
+<p>Example:</p>
+
+<p><code>if (event.getLastPayload() == &#39;red&#39;) {</code></p>
+
+<p><code>&nbsp; &nbsp; event.color = &#39;#FF0000&#39;;</code></p>
+
+<p><code>} else&nbsp;if (event.getLastPayload()&nbsp;== &#39;green&#39;) {</code></p>
+
+<p><code>&nbsp; &nbsp; event.color = &#39;#2AFF00&#39;;</code></p>
+
+<p><code>} else&nbsp;if (event.getLastPayload()&nbsp;== &#39;blue&#39;) {</code></p>
+
+<p><code>&nbsp; &nbsp; event.color = &#39;#002BFF&#39;;</code></p>
+
+<p><code>}</code></p>
+
+<hr />
+<h2>Color metric &rArr;&nbsp;<em><strong>On Click</strong></em> handler called when user taps/clicks on the tile. You can use:</h2>
+
+<p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
+
+<p><em><strong>event.preventDefault</strong></em>&nbsp;- (Boolean) False by default. If True, default tap event behavoiur will be disabled.</p>
+
+<p>Example:</p>
+
+<p><code>event.preventDefault = true;</code></p>
+
+<p><code>if (event.data) {</code></p>
+
+<p><code>&nbsp; &nbsp; app.publish(&#39;messages/alert&#39;, event.data);</code></p>
 
 <p><code>}</code></p>
