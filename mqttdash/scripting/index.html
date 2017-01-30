@@ -1,9 +1,13 @@
 <h1><strong>MQTT Dash</strong> scripting manual (JavaScript)</h1>
 
 <hr />
+<p><a name="text-metric-on-receive"></a></p>
+
 <h2>Text metric &rArr;&nbsp;<em><strong>On Receive</strong></em> handler called when payload received for the metric. You can use:</h2>
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
@@ -20,9 +24,13 @@
 <p><code>}</code></p>
 
 <hr />
+<h2><a id="text-metric-on-display" name="text-metric-on-display"></a></h2>
+
 <h2>Text metric &rArr;&nbsp;<em><strong>On Display</strong></em> handler called when tile needs to be updated/re-rendered, e.g. contents or last activity time changed. Usually it happens once per second for all visible tiles.&nbsp;You can use:</h2>
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
@@ -53,9 +61,13 @@
 <p><code>}</code></p>
 
 <hr />
+<h2><a id="text-metric-on-click" name="text-metric-on-click"></a></h2>
+
 <h2>Text metric &rArr;&nbsp;<em><strong>On Click</strong></em> handler called when user taps/clicks on the tile. You can use:</h2>
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
@@ -72,9 +84,13 @@
 <p><code>}</code></p>
 
 <hr />
+<h2><a id="switch-metric-on-receive" name="switch-metric-on-receive"></a></h2>
+
 <h2>Switch metric &rArr;&nbsp;<em><strong>On Receive</strong></em> handler called when payload received for the metric. You can use:</h2>
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
@@ -95,9 +111,13 @@
 <p><code>}</code></p>
 
 <hr />
+<h2><a id="switch-metric-on-display" name="switch-metric-on-display"></a></h2>
+
 <h2>Switch metric &rArr;&nbsp;<em><strong>On Display</strong></em> handler called when tile needs to be updated/re-rendered, e.g. contents or last activity time changed. Usually it happens once per second for all visible tiles.&nbsp;You can use:</h2>
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
@@ -126,9 +146,13 @@
 <p><code>}</code></p>
 
 <hr />
+<h2><a id="switch-metric-on-click" name="switch-metric-on-click"></a></h2>
+
 <h2>Switch metric &rArr;&nbsp;<em><strong>On Click</strong></em> handler called when user taps/clicks on the tile. You can use:</h2>
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
@@ -145,9 +169,13 @@
 <p><code>}</code></p>
 
 <hr />
+<h2><a id="range-metric-on-receive" name="range-metric-on-receive"></a></h2>
+
 <h2>Range/progress metric &rArr;&nbsp;<em><strong>On Receive</strong></em> handler called when payload received for the metric. You can use:</h2>
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
@@ -168,9 +196,13 @@
 <p><code>}</code></p>
 
 <hr />
+<h2><a id="range-metric-on-display" name="range-metric-on-display"></a></h2>
+
 <h2>Range/progress metric &rArr;&nbsp;<em><strong>On Display</strong></em> handler called when tile needs to be updated/re-rendered, e.g. contents or last activity time changed. Usually it happens once per second for all visible tiles.&nbsp;You can use:</h2>
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
@@ -197,9 +229,13 @@
 <p><code>}</code></p>
 
 <hr />
+<h2><a id="range-metric-on-click" name="range-metric-on-click"></a></h2>
+
 <h2>Range/progress metric &rArr;&nbsp;<em><strong>On Click</strong></em> handler called when user taps/clicks on the tile. You can use:</h2>
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
@@ -216,9 +252,13 @@
 <p><code>}</code></p>
 
 <hr />
+<h2><a id="multi-choice-metric-on-receive" name="multi-choice-metric-on-receive"></a></h2>
+
 <h2>Multi choice metric &rArr;&nbsp;<em><strong>On Receive</strong></em> handler called when payload received for the metric. You can use:</h2>
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
@@ -235,9 +275,13 @@
 <p><code>}</code></p>
 
 <hr />
+<h2><a id="multi-choice-metric-on-display" name="multi-choice-metric-on-display"></a></h2>
+
 <h2>Multi choice metric &rArr;&nbsp;<em><strong>On Display</strong></em> handler called when tile needs to be updated/re-rendered, e.g. contents or last activity time changed. Usually it happens once per second for all visible tiles.&nbsp;You can use:</h2>
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
@@ -266,9 +310,13 @@
 <p><code>}</code></p>
 
 <hr />
+<h2><a id="multi-choice-metric-on-click" name="multi-choice-metric-on-click"></a></h2>
+
 <h2>Multi choice metric &rArr;&nbsp;<em><strong>On Click</strong></em> handler called when user taps/clicks on the tile. You can use:</h2>
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
@@ -285,9 +333,13 @@
 <p><code>}</code></p>
 
 <hr />
-<h2>Image metric &rArr;&nbsp;<em><strong>On Receive</strong></em> handler called when payload received for the metric. You can use:</h2>
+<h2><a id="image-metric-on-receive" name="image-metric-on-receive"></a></h2>
+
+<h2>Image metric &rArr;&nbsp;<em><strong>On Receive</strong></em> handler called when payload received for the metric (called only if you&#39;ve selected &quot;Image URL in payload&quot; setting).&nbsp;You can use:</h2>
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
@@ -308,9 +360,13 @@
 <p><code>}</code></p>
 
 <hr />
+<h2><a id="image-metric-on-display" name="image-metric-on-display"></a></h2>
+
 <h2>Image metric &rArr;&nbsp;<em><strong>On Display</strong></em> handler called when tile needs to be updated/re-rendered, e.g. contents or last activity time changed. Usually it happens once per second for all visible tiles.&nbsp;You can use:</h2>
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
@@ -337,9 +393,13 @@
 <p><code>}</code></p>
 
 <hr />
+<h2><a id="image-metric-on-click" name="image-metric-on-click"></a></h2>
+
 <h2>Image metric &rArr;&nbsp;<em><strong>On Click</strong></em> handler called when user taps/clicks on the tile. You can use:</h2>
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
@@ -356,9 +416,13 @@
 <p><code>}</code></p>
 
 <hr />
+<h2><a id="color-metric-on-receive" name="color-metric-on-receive"></a></h2>
+
 <h2>Color metric &rArr;&nbsp;<em><strong>On Receive</strong></em> handler called when payload received for the metric. You can use:</h2>
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
@@ -383,9 +447,13 @@
 <p><code>}</code></p>
 
 <hr />
+<h2><a id="color-metric-on-display" name="color-metric-on-display"></a></h2>
+
 <h2>Color metric &rArr;&nbsp;<em><strong>On Display</strong></em> handler called when tile needs to be updated/re-rendered, e.g. contents or last activity time changed. Usually it happens once per second for all visible tiles.&nbsp;You can use:</h2>
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
@@ -416,9 +484,13 @@
 <p><code>}</code></p>
 
 <hr />
+<h2><a id="color-metric-on-click" name="color-metric-on-click"></a></h2>
+
 <h2>Color metric &rArr;&nbsp;<em><strong>On Click</strong></em> handler called when user taps/clicks on the tile. You can use:</h2>
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
+
+<p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
