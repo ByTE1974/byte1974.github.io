@@ -7,13 +7,23 @@
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
+
+<p>&nbsp;</p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.payload</strong></em> - (String) Received raw payload string. You can modify/transform it before it&#39;ll be processed and displayed.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.topic</strong></em> - (String) Topic, to which payload was received.</p>
+
+<p>&nbsp;</p>
 
 <p>Example:</p>
 
@@ -30,21 +40,39 @@
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
+
+<p>&nbsp;</p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.getSecondsSinceLastActivity()</strong></em> - (Integer) Returns number of seconds, elapsed since last payload was received.</p>
+
+<p>&nbsp;</p>
 
 <p><em><strong>event.lastActivityString</strong></em> - (String) Text to display at the bottom of tile.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.name</strong></em> - (String) Text to be shown at the top of tile.</p>
+
+<p>&nbsp;</p>
 
 <p><em><strong>event.getLastPayload()</strong></em> - (String) Returns last received raw payload.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.text</strong></em> - (String) Main text to display.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.textColor</strong></em> - (HEX String) Main text color. E.g. &quot;<em><strong>#ffffcc</strong></em>&quot;.</p>
+
+<p>&nbsp;</p>
 
 <p>Example:</p>
 
@@ -67,11 +95,19 @@
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
+
+<p>&nbsp;</p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.preventDefault</strong></em>&nbsp;- (Boolean) False by default. If True, default tap event behavoiur will be disabled.</p>
+
+<p>&nbsp;</p>
 
 <p>Example:</p>
 
@@ -90,13 +126,23 @@
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
+
+<p>&nbsp;</p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.payload</strong></em> - (String) Received raw payload string. You can modify/transform it before it&#39;ll be processed and displayed.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.topic</strong></em> - (String) Topic, to which payload was received.</p>
+
+<p>&nbsp;</p>
 
 <p>Example:</p>
 
@@ -117,21 +163,39 @@
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
+
+<p>&nbsp;</p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.getSecondsSinceLastActivity()</strong></em> - (Integer) Returns number of seconds, elapsed since last payload was received.</p>
+
+<p>&nbsp;</p>
 
 <p><em><strong>event.lastActivityString</strong></em> - (String) Text to display at the bottom of tile.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.name</strong></em> - (String) Text to be shown at the top of tile.</p>
+
+<p>&nbsp;</p>
 
 <p><em><strong>event.getLastPayload()</strong></em> - (String) Returns last received raw payload.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.on</strong></em> - (Boolean) You can set this property in order to change the switch status to ON or OFF.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.iconColor</strong></em> - (HEX String) Icon&nbsp;color. E.g. &quot;<em><strong>#ffffcc</strong></em>&quot;.</p>
+
+<p>&nbsp;</p>
 
 <p>Example:</p>
 
@@ -152,11 +216,19 @@
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
+
+<p>&nbsp;</p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.preventDefault</strong></em>&nbsp;- (Boolean) False by default. If True, default tap event behavoiur will be disabled.</p>
+
+<p>&nbsp;</p>
 
 <p>Example:</p>
 
@@ -175,13 +247,23 @@
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
+
+<p>&nbsp;</p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.payload</strong></em> - (String) Received raw payload string. You can modify/transform it before it&#39;ll be processed and displayed.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.topic</strong></em> - (String) Topic, to which payload was received.</p>
+
+<p>&nbsp;</p>
 
 <p>Example:</p>
 
@@ -202,19 +284,35 @@
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
+
+<p>&nbsp;</p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.getSecondsSinceLastActivity()</strong></em> - (Integer) Returns number of seconds, elapsed since last payload was received.</p>
+
+<p>&nbsp;</p>
 
 <p><em><strong>event.lastActivityString</strong></em> - (String) Text to display at the bottom of tile.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.name</strong></em> - (String) Text to be shown at the top of tile.</p>
+
+<p>&nbsp;</p>
 
 <p><em><strong>event.getLastPayload()</strong></em> - (String) Returns last received raw payload.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.progressColor</strong></em> - (HEX String) Main text color. E.g. &quot;<em><strong>#ffffcc</strong></em>&quot;.</p>
+
+<p>&nbsp;</p>
 
 <p>Example:</p>
 
@@ -235,11 +333,19 @@
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
+
+<p>&nbsp;</p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.preventDefault</strong></em>&nbsp;- (Boolean) False by default. If True, default tap event behavoiur will be disabled.</p>
+
+<p>&nbsp;</p>
 
 <p>Example:</p>
 
@@ -258,13 +364,23 @@
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
+
+<p>&nbsp;</p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.payload</strong></em> - (String) Received raw payload string. You can modify/transform it before it&#39;ll be processed and displayed.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.topic</strong></em> - (String) Topic, to which payload was received.</p>
+
+<p>&nbsp;</p>
 
 <p>Example:</p>
 
@@ -281,21 +397,39 @@
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
+
+<p>&nbsp;</p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.getSecondsSinceLastActivity()</strong></em> - (Integer) Returns number of seconds, elapsed since last payload was received.</p>
+
+<p>&nbsp;</p>
 
 <p><em><strong>event.lastActivityString</strong></em> - (String) Text to display at the bottom of tile.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.name</strong></em> - (String) Text to be shown at the top of tile.</p>
+
+<p>&nbsp;</p>
 
 <p><em><strong>event.getLastPayload()</strong></em> - (String) Returns last received raw payload.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.text</strong></em> - (String) Main text to display.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.textColor</strong></em> - (HEX String) Main text color. E.g. &quot;<em><strong>#ffffcc</strong></em>&quot;.</p>
+
+<p>&nbsp;</p>
 
 <p>Example:</p>
 
@@ -316,11 +450,19 @@
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
+
+<p>&nbsp;</p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.preventDefault</strong></em>&nbsp;- (Boolean) False by default. If True, default tap event behavoiur will be disabled.</p>
+
+<p>&nbsp;</p>
 
 <p>Example:</p>
 
@@ -339,13 +481,23 @@
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
+
+<p>&nbsp;</p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.payload</strong></em> - (String) Received raw payload string. You can modify/transform it before it&#39;ll be processed and displayed.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.topic</strong></em> - (String) Topic, to which payload was received.</p>
+
+<p>&nbsp;</p>
 
 <p>Example:</p>
 
@@ -366,19 +518,35 @@
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
+
+<p>&nbsp;</p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.getSecondsSinceLastActivity()</strong></em> - (Integer) Returns number of seconds, elapsed since last payload was received.</p>
+
+<p>&nbsp;</p>
 
 <p><em><strong>event.lastActivityString</strong></em> - (String) Text to display at the bottom of tile.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.name</strong></em> - (String) Text to be shown at the top of tile.</p>
+
+<p>&nbsp;</p>
 
 <p><em><strong>event.getLastPayload()</strong></em> - (String) Returns last received raw payload.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.url</strong></em>&nbsp;- (String) Image URL to download and display.</p>
+
+<p>&nbsp;</p>
 
 <p>Example:</p>
 
@@ -399,11 +567,19 @@
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
+
+<p>&nbsp;</p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.preventDefault</strong></em>&nbsp;- (Boolean) False by default. If True, default tap event behavoiur will be disabled.</p>
+
+<p>&nbsp;</p>
 
 <p>Example:</p>
 
@@ -422,13 +598,23 @@
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
+
+<p>&nbsp;</p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.payload</strong></em> - (String) Received raw payload string. You can modify/transform it before it&#39;ll be processed and displayed.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.topic</strong></em> - (String) Topic, to which payload was received.</p>
+
+<p>&nbsp;</p>
 
 <p>Example:</p>
 
@@ -453,19 +639,35 @@
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
+
+<p>&nbsp;</p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.getSecondsSinceLastActivity()</strong></em> - (Integer) Returns number of seconds, elapsed since last payload was received.</p>
+
+<p>&nbsp;</p>
 
 <p><em><strong>event.lastActivityString</strong></em> - (String) Text to display at the bottom of tile.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.name</strong></em> - (String) Text to be shown at the top of tile.</p>
+
+<p>&nbsp;</p>
 
 <p><em><strong>event.getLastPayload()</strong></em> - (String) Returns last received raw payload.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.color</strong></em> - (HEX String) Icon color. E.g. &quot;<em><strong>#ffffcc</strong></em>&quot;.</p>
+
+<p>&nbsp;</p>
 
 <p>Example:</p>
 
@@ -490,11 +692,19 @@
 
 <p><em><strong>app.publish(topic, payload, retained, qos);</strong></em> - Publish to <em><strong>payload</strong></em>&nbsp;(String) to <em><strong>topic</strong></em> (String) with specified <em><strong>retained</strong></em> flag (Boolean)&nbsp;and <em><strong>qos&nbsp;</strong></em>(Integer).</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>app.openUri(uri);</strong></em> - Open specified <em><strong>uri</strong></em> (String) in an external app. <em><strong>uri</strong></em> examples: <strong><em>http://www.example.com/page.html</em></strong><em>, </em><strong><em>tel:123</em></strong><em>,&nbsp;</em><strong><em>content://contacts/people/</em></strong></p>
+
+<p>&nbsp;</p>
 
 <p><em><strong>event.data</strong></em> - (Any type) Custom runtime data. You can get/set any data, which you need to be preserved between calls. The data shared between <em><strong>On Receive</strong></em>, <em><strong>On Display</strong></em>, <strong><em>On Tap</em></strong>. So you can set data in <em><strong>On Receive</strong></em> and use this data later in <strong><em>On Display</em></strong>. The data not preserved between app launches.</p>
 
+<p>&nbsp;</p>
+
 <p><em><strong>event.preventDefault</strong></em>&nbsp;- (Boolean) False by default. If True, default tap event behavoiur will be disabled.</p>
+
+<p>&nbsp;</p>
 
 <p>Example:</p>
 
