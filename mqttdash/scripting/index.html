@@ -29,7 +29,7 @@
 
 <p><code>if (parseInt(event.payload) &gt; 90) {</code></p>
 
-<p><code>&nbsp; &nbsp; app.publish(&#39;messages/alert&#39;, &#39;HOT&#39;);</code></p>
+<p><code>&nbsp; &nbsp; app.publish(&#39;messages/alert&#39;, &#39;HOT&#39;, false, 0);</code></p>
 
 <p><code>}</code></p>
 
@@ -119,7 +119,7 @@
 
 <p><code>if (event.data) {</code></p>
 
-<p><code>&nbsp; &nbsp; app.publish(&#39;messages/alert&#39;, event.data);</code></p>
+<p><code>&nbsp; &nbsp; app.publish(&#39;messages/alert&#39;, event.data, false, 0);</code></p>
 
 <p><code>}</code></p>
 
@@ -152,11 +152,11 @@
 
 <p><code>if (event.payload&nbsp;==&nbsp;&#39;1&#39;) {</code></p>
 
-<p><code>&nbsp; &nbsp; app.publish(&#39;messages/alert&#39;, &#39;ON&#39;);</code></p>
+<p><code>&nbsp; &nbsp; app.publish(&#39;messages/alert&#39;, &#39;ON&#39;, false, 0);</code></p>
 
 <p><code>} else {</code></p>
 
-<p><code>&nbsp; &nbsp; app.publish(&#39;messages/alert&#39;, &#39;OFF&#39;);</code></p>
+<p><code>&nbsp; &nbsp; app.publish(&#39;messages/alert&#39;, &#39;OFF&#39;, false, 0);</code></p>
 
 <p><code>}</code></p>
 
@@ -244,7 +244,7 @@
 
 <p><code>if (event.data) {</code></p>
 
-<p><code>&nbsp; &nbsp; app.publish(&#39;messages/alert&#39;, event.data);</code></p>
+<p><code>&nbsp; &nbsp; app.publish(&#39;messages/alert&#39;, event.data, false, 0);</code></p>
 
 <p><code>}</code></p>
 
@@ -277,11 +277,11 @@
 
 <p><code>if (parseInt(event.payload) &gt; 90) {</code></p>
 
-<p><code>&nbsp; &nbsp; app.publish(&#39;messages/alert&#39;, &#39;TOO HOT&#39;);</code></p>
+<p><code>&nbsp; &nbsp; app.publish(&#39;messages/alert&#39;, &#39;TOO HOT&#39;, false, 0);</code></p>
 
 <p><code>} else {</code></p>
 
-<p><code>&nbsp; &nbsp; app.publish(&#39;messages/status&#39;, &#39;NORMAL&#39;);</code></p>
+<p><code>&nbsp; &nbsp; app.publish(&#39;messages/status&#39;, &#39;NORMAL&#39;, false, 0);</code></p>
 
 <p><code>}</code></p>
 
@@ -365,7 +365,7 @@
 
 <p><code>if (event.data) {</code></p>
 
-<p><code>&nbsp; &nbsp; app.publish(&#39;messages/status&#39;, event.data);</code></p>
+<p><code>&nbsp; &nbsp; app.publish(&#39;messages/status&#39;, event.data, false, 0);</code></p>
 
 <p><code>}</code></p>
 
@@ -398,7 +398,7 @@
 
 <p><code>if (parseInt(event.payload) &gt; 90) {</code></p>
 
-<p><code>&nbsp; &nbsp; app.publish(&#39;messages/alert&#39;, &#39;HOT&#39;);</code></p>
+<p><code>&nbsp; &nbsp; app.publish(&#39;messages/alert&#39;, &#39;HOT&#39;, false, 0);</code></p>
 
 <p><code>}</code></p>
 
@@ -486,7 +486,7 @@
 
 <p><code>if (event.data) {</code></p>
 
-<p><code>&nbsp; &nbsp; app.publish(&#39;messages/alert&#39;, event.data);</code></p>
+<p><code>&nbsp; &nbsp; app.publish(&#39;messages/alert&#39;, event.data, false, 0);</code></p>
 
 <p><code>}</code></p>
 
@@ -607,7 +607,7 @@
 
 <p><code>if (event.data) {</code></p>
 
-<p><code>&nbsp; &nbsp; app.publish(&#39;messages/alert&#39;, event.data);</code></p>
+<p><code>&nbsp; &nbsp; app.publish(&#39;messages/alert&#39;, event.data, false, 0);</code></p>
 
 <p><code>}</code></p>
 
@@ -736,6 +736,6 @@
 
 <p><code>if (event.data) {</code></p>
 
-<p><code>&nbsp; &nbsp; app.publish(&#39;messages/alert&#39;, event.data);</code></p>
+<p><code>&nbsp; &nbsp; app.publish(&#39;messages/alert&#39;, event.data, false, 0);</code></p>
 
 <p><code>}</code></p>
