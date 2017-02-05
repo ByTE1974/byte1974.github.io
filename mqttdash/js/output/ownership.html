@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+ <head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"><!--Prevent IE using compatibility mode on local or intranet pages. Do not put scripts before this line.-->
+  <meta name="viewport" content="width=device-width, user-scalable=yes"><!--Mobile device scaling-->
+  <meta charset="UTF-8">
+  <title>DocGen - empty template</title>
+
+  <!--load stylesheets first (rationale: https://developers.google.com/speed/docs/best-practices/rtt#PutStylesBeforeScripts)-->
+  <link rel="stylesheet" href="require/webknife/framework.min.css" type="text/css">
+  <link rel="stylesheet" href="require/webknife/highlight.min.css" type="text/css">
+  <link rel="stylesheet" href="require/docgen.css" type="text/css">
+  <link rel="stylesheet" href="require/print.css" media="print">
+
+  <!--load scripts second-->
+
+  <script src="require/webknife/framework.min.js"></script>
+  <script src="require/webknife/framework.icons.js"></script>
+  <script src="require/webknife/highlight.min.js"></script>
+
+  <!--inline scripts last-->
+
+<script type="text/javascript">
+
+$(document).ready( function () {
+  $("#dg-toc").hide(); //hide the table of contents
+
+  //instantiate an svg injector to show SVG icons
+  var injector = new svgInject();
+  injector.inject();
+
+  //code syntax highlighting
+  $('pre code, .w-inline-code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+
+  //toggle visibility of table of contents
+  $("#dg-navigator").click(function()
+  {
+    $("#dg-toc").slideToggle("fast");
+    $(this).toggleClass("active");
+  });
+
+});
+</script>
+
+<script type="text/x-mathjax-config">
+//MathJax configuration is the same as used by math.stackexchange.com
+MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+  tex2jax: { inlineMath: [ ["$", "$"], ["\\\\(","\\\\)"] ], displayMath: [ ["$$","$$"], ["\\[", "\\]"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno" },
+  TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+  messageStyle: "none"
+});
+</script>
+
+</head>
+
+<body>
+
+<div id="dg-toc"><div><table class="unstyled"><tr><td class="dg-tocGroup"><ul><li class="dg-tocHeading">Quick Start</li><li><a href="index.html">Overview</a></li></ul></td><td class="dg-tocGroup"></td><td class="dg-tocGroup"></td><td class="dg-tocGroup"></td><td class="dg-tocGroup" id="dg-tocFixedColumn"><ul><li><span class="w-icon dg-tocIcon" data-name="person_group" title="archive"></span><a href="ownership.html">Ownership</a></li><li><span class="w-icon dg-tocIcon" data-name="refresh" title="archive"></span><a href="release-notes.html">Release Notes</a></li></ul><div></div></td></tr></table></div></div>
+<div id="dg-navigator">Table of contents</div>
+
+<header>
+ <div class="w-fixed-width">
+  <a id="dg-homelink" href="index.html">
+    <div id="dg-logo" style="background-image: url(files/images/logo.png); height: 42px; line-height: 42px; padding-left: 85px;">
+      <span id="dg-title">DocGen - empty template</span> <span id="dg-web-title-version" style="font-weight:normal;">(1.0.0)</span>
+    </div>
+  </a>
+  <div>
+    <span id="dg-backlink"></span>
+  </div>
+ </div>
+</header>
+
+<section id="dg-content"><div class="w-fixed-width"><div id="dg-innerContent"><style>
+
+#dg-coverInfo {
+  margin-top: 100px;
+  margin-bottom: 50px;
+  width: 100%;
+}
+
+#dg-coverInfo {
+  border-collapse: separate; /*http://stackoverflow.com/questions/7625586/*/
+}
+
+#dg-coverInfo th {
+  background-color: #385691;
+  color: white;
+  font-size: 34px;
+  padding: 20px;
+  border: 1px solid #385691;
+  border-radius: 10px 10px 0 0;
+}
+
+#dg-coverInfo tr td {
+  border-top: 2px solid #385691;
+  border-left: 2px solid #385691;
+  border-bottom: none;
+  border-right: none;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#dg-coverInfo td:last-child {
+  border-right: 2px solid #385691;
+}
+
+#dg-coverInfo .dg-finalRow td {
+  border-bottom: 2px solid #385691;
+}
+
+#dg-summary {
+  margin-bottom: 100px;
+}
+
+</style>
+
+<table class="w-table w-fixed" id="dg-coverInfo">
+<thead>
+ <tr>
+  <th colspan="3" id="dg-title">DocGen - empty template</th>
+ </tr>
+ </thead>
+ <tfoot>
+ </tfoot>
+ <tbody>
+ <tr>
+  <td><strong>Owner: </strong> <span id="dg-owner"></span></td>
+  <td><strong>Version: </strong> <span id="dg-version">1.0.0</span></td>
+  <td><strong>Released: </strong> <span id="dg-release-date">XX/XX/XXXX</span></td>
+ </tr>
+ <tr>
+  <td><strong>Author: </strong> <span id="dg-author"></span></td>
+  <td colspan="2"><strong>Contributors: </strong> <span id="dg-contributors"></span></td>
+ </tr>
+ <tr class="dg-finalRow">
+  <td><strong>Module: </strong> <span id="dg-module"></span></td>
+  <td><strong>ID: </strong> <span id="dg-id"></span></td>
+  <td><strong>Link: </strong> <span id="dg-website"></span></td>
+ </tr>
+ <tr>
+</tr></tbody>
+</table>
+
+<h1>Summary</h1>
+<p id="dg-summary"></p>
+</div></div></section>
+
+ <footer>
+  <div><p class="w-fixed-width"><span id="dg-web-footer">Version 1.0.0 released on XX/XX/XXXX.</span></p></div>
+  <div class="w-fixed-width">
+    <p><span id="dg-copyright">&#xA9; 2017 </span></p>
+    <p>
+      <span id="dg-marking"></span>
+      <span id="dg-legalese"></span>
+      <span id="dg-attribution">Created by DocGen 2.1.3 on 05/02/2017 at 14:23:27.</span>
+    </p>
+  </div>
+ </footer>
+ 
+ </body>
+</html>

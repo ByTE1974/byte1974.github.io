@@ -1,0 +1,12 @@
+[
+	{
+		"heading" : "Quick Start",
+		"column" : 1,
+		"pages" : [
+			{
+				"title": "Overview",
+				"source": "index.txt"
+			}
+		]
+	}
+]

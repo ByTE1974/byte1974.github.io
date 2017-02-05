@@ -1,0 +1,37 @@
+{
+	"title" : "DocGen - empty template",
+	"name": "",
+	"version" : "1.0.0",
+	"date" : "XX/XX/XXXX",
+	"organization" : {
+		"name" : "",
+		"url" : ""
+	},
+	"author" : {
+		"name" : "",
+		"url" : ""
+	},
+	"owner" : {
+		"name" : "",
+		"url" : ""
+	},
+	"contributors" : [
+		{
+			"name" : "",
+			"url" : ""
+		}
+	],
+	"website" : {
+		"name" : "",
+		"url" : ""
+	},
+	"backlink" : {
+		"name" : "",
+		"url" : ""
+	},
+	"module" : "",
+	"id" : "",
+	"summary" : "",
+	"marking" : "",
+	"legalese" : ""
+}
