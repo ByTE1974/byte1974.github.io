@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>text-metric-on-receive</title>
+<title>switch-metric-on-receive</title>
 <link rel="stylesheet" href="https://stackedit.io/res-min/themes/base.css" />
 <script type="text/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sunburst"></script>
 </head>
-<body><div class="container"><h2 id="text-metric-on-receive">Text metric: On Receive</h2>
+<body><div class="container"><h2 id="switchbutton-metric-on-receive">Switch/button metric: On Receive</h2>
 
 <p>This handler called when payload received for the metric. <br>
 It has nothing to do with visual representation and usually used to handle received data <code>BEFORE</code> visual state will be updated.</p>
@@ -75,6 +75,8 @@ event.data[<span class="hljs-string">'some flag'</span>] = (event.payload == <sp
 
 <p>In <code>On Display</code> or in <code>On Tap</code> handler:</p>
 
+
+
 <pre class="prettyprint"><code class="language-js hljs "><span class="hljs-keyword">if</span> (event.data[<span class="hljs-string">'some flag'</span>]) {
     <span class="hljs-comment">// do something</span>
 } <span class="hljs-keyword">else</span> {
@@ -91,21 +93,16 @@ event.data[<span class="hljs-string">'some flag'</span>] = (event.payload == <sp
 
 
 
-<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-keyword">if</span> (event.payload &lt; <span class="hljs-number">10</span>) {
-    app.publish(<span class="hljs-string">'messages/alert'</span>, <span class="hljs-string">'TOO COLD'</span>, <span class="hljs-literal">false</span>, <span class="hljs-number">0</span>);
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-keyword">if</span> (event.payload == <span class="hljs-number">1</span>) {
+    app.publish(<span class="hljs-string">'messages/alert'</span>, <span class="hljs-string">'ON'</span>, <span class="hljs-literal">false</span>, <span class="hljs-number">0</span>);
     <span class="hljs-comment">// you could also modify it in place, before it'll be displayed</span>
-    <span class="hljs-comment">// event.payload = 'COLD';</span>
-} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (event.payload &gt; <span class="hljs-number">80</span>) {
-    app.publish(<span class="hljs-string">'messages/alert'</span>, <span class="hljs-string">'TOO HOT'</span>, <span class="hljs-literal">false</span>, <span class="hljs-number">0</span>);
-    <span class="hljs-comment">// event.payload = 'HOT';</span>
+    <span class="hljs-comment">// event.payload = 'ON';</span>
 } <span class="hljs-keyword">else</span> {
-    app.publish(<span class="hljs-string">'messages/alert'</span>, <span class="hljs-string">'NORMAL'</span>, <span class="hljs-literal">false</span>, <span class="hljs-number">0</span>);
-    <span class="hljs-comment">// event.payload = 'NORMAL';</span>
+    app.publish(<span class="hljs-string">'messages/alert'</span>, <span class="hljs-string">'OFF'</span>, <span class="hljs-literal">false</span>, <span class="hljs-number">0</span>);
+    <span class="hljs-comment">// event.payload = 'OFF';</span>
 }</code></pre>
 
 <hr>
-
-
 
 <h4 id="eventtopic"><strong><code>event.topic</code></strong></h4>
 
@@ -113,10 +110,10 @@ event.data[<span class="hljs-string">'some flag'</span>] = (event.payload == <sp
 
 
 
-<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// if you have configured subscription topic like 'sensors/+/temp'</span>
-<span class="hljs-keyword">if</span> (event.topic == <span class="hljs-string">'sensors/kitchen/temp'</span>) {
-    <span class="hljs-comment">// do something</span>
-} <span class="hljs-keyword">else</span> {
-    <span class="hljs-comment">// do something other</span>
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// if you have configured subscription topic like 'thermostat/+/temp'</span>
+<span class="hljs-keyword">if</span> (event.topic == <span class="hljs-string">'thermostat/kitchen/temp'</span>) {
+    <span class="hljs-comment">// do something for kitchen</span>
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (event.topic == <span class="hljs-string">'thermostat/bedroom/temp'</span>) {
+    <span class="hljs-comment">// do something other for bedroom</span>
 }</code></pre></div></body>
 </html>

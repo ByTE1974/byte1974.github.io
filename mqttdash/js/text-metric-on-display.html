@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>text-metric-on-display</title>
+<link rel="stylesheet" href="https://stackedit.io/res-min/themes/base.css" />
+<script type="text/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sunburst"></script>
+</head>
+<body><div class="container"><h2 id="text-metric-on-display">Text metric: On Display</h2>
+
+<p>This handler called when tile needs to be updated. E.g. when last activity time needs to be updated or new payload received and needs to be displayed.</p>
+
+<blockquote>
+  <p><code>Note</code>: This handler called only for visible tiles. If tile scrolled away, this handler will not be called. <br>
+  <code>Important</code>:  this handler is executed each time in <code>CLEAN</code> mode. This means, that previous call state will be cleaned up (any declared variables and functions in previous call will be purged in subsequent call)! <br>
+  To pass data between calls and handlers use <code>event.data</code>.</p>
+</blockquote>
+
+<h3 id="in-this-handler-you-can-use-the-following">In this handler you can use the following:</h3>
+
+
+
+<h4 id="apppublishtopic-payload-retained-qos"><strong><code>app.publish(topic, payload, retained, qos);</code></strong></h4>
+
+<p>Publish <code>payload</code> (String) to <code>topic</code> (String) with specified <code>retained</code> flag (Boolean) and <code>qos</code> (Integer). Example:</p>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs ">app.publish(<span class="hljs-string">'messages/alert'</span>, <span class="hljs-string">'HOT'</span>, <span class="hljs-literal">false</span>, <span class="hljs-number">0</span>);</code></pre>
+
+<hr>
+
+
+
+<h4 id="appopenuriuri"><strong><code>app.openUri(uri);</code></strong></h4>
+
+<p>Open specified <code>uri</code> (String) in an external app. <code>uri</code> examples: <br>
+- <code>http://www.example.com/page.html</code> <br>
+- <code>tel:123</code> <br>
+- <code>content://contacts/people/</code></p>
+
+<blockquote>
+  <p>Usually you don’t want to use it in <code>On Display</code> handler, because <code>On Display</code> executed every time, when tile needs to be updated and this happens quite often.</p>
+</blockquote>
+
+<pre class="prettyprint"><code class="language-js hljs ">app.openUri(<span class="hljs-string">'http://www.example.com'</span>);</code></pre>
+
+<hr>
+
+
+
+<h4 id="eventdata"><strong><code>event.data</code></strong></h4>
+
+<p>(Any type) Custom runtime user data, bound to this particular metric. You can get/set any data, which you need to be preserved between calls. <br>
+The data shared between <code>On Receive</code>, <code>On Display</code>, <code>On Tap</code> handlers. So you can set data in <code>On Receive</code> and use this data later in <code>On Display</code>.</p>
+
+<blockquote>
+  <p><code>Warning</code>: never pass functions through <code>event.data</code>! <br>
+  The data <code>NOT</code> preserved between app launches. Usually, because the data is not assigned by default, you want to start your handler’s code with check if data assigned, and then use the data:</p>
+</blockquote>
+
+<p>In <code>On Receive</code> handler:</p>
+
+
+
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-keyword">if</span> (!event.data) {
+    event.data = {};
+}
+event.data[<span class="hljs-string">'some flag'</span>] = 
+    (event.payload == <span class="hljs-string">'something'</span> ? <span class="hljs-literal">true</span> : <span class="hljs-literal">false</span>);</code></pre>
+
+<p>In <code>On Display</code> or in <code>On Tap</code> handler:</p>
+
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-keyword">if</span> (event.data[<span class="hljs-string">'some flag'</span>]) {
+    <span class="hljs-comment">// do something</span>
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-comment">// do something other</span>
+}</code></pre>
+
+<hr>
+
+
+
+<h4 id="eventgetsecondssincelastactivity"><strong><code>event.getSecondsSinceLastActivity()</code></strong></h4>
+
+<p>(Integer) Number of seconds, elapsed since last activity (since payload received last time for this metric):</p>
+
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// blink tile to draw attention, if last payload</span>
+<span class="hljs-comment">// was received more than 60 secons ago</span>
+event.blink = event.getSecondsSinceLastActivity() &gt; <span class="hljs-number">60</span>;</code></pre>
+
+<hr>
+
+
+
+<h4 id="eventlastactivitystring"><strong><code>event.lastActivityString</code></strong></h4>
+
+<p>(String) Text to display at the bottom of tile. By default it contains elapsed time, but you can override it. For example:</p>
+
+<pre class="prettyprint"><code class="language-js hljs ">event.lastActivityString = 
+    event.getSecondsSinceLastActivity() + <span class="hljs-string">" seconds ago"</span>;</code></pre>
+
+<hr>
+
+<h4 id="eventblink"><strong><code>event.blink</code></strong></h4>
+
+<p>(Boolean) Tile will blink if value of the property is <code>true</code>. Example:</p>
+
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// blink tile if temperature out of range</span>
+event.blink =
+    (event.getLastPayload() &lt; <span class="hljs-number">20</span> || event.getLastPayload() &gt; <span class="hljs-number">40</span>);</code></pre>
+
+<hr>
+
+
+
+<h4 id="eventname"><strong><code>event.name</code></strong></h4>
+
+<p>(String) Text to display at the top of the tile. By default it contains metric name. You can override it.</p>
+
+<hr>
+
+
+
+<h4 id="eventgetlastpayload"><strong><code>event.getLastPayload()</code></strong></h4>
+
+<p>(String) Returns last received raw payload. Raw means, that prefix, postfix and any other payload transformations not applied yet (if configured).</p>
+
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// change text color if temperature is below 20 degrees</span>
+<span class="hljs-comment">// and display 'COLD' instead of temperature</span>
+<span class="hljs-keyword">if</span> (event.getLastPayload() &lt; <span class="hljs-number">20</span>) {
+    event.textColor = <span class="hljs-string">'#ffcccc'</span>;
+    event.text = <span class="hljs-string">'COLD'</span>;
+} <span class="hljs-keyword">else</span> {
+    event.textColor = <span class="hljs-string">'#ffffff'</span>;
+};</code></pre>
+
+<hr>
+
+
+
+<h4 id="eventtext"><strong><code>event.text</code></strong></h4>
+
+<p>(String) Main tile text. You can override it. See example from above.</p>
+
+<hr>
+
+
+
+<h4 id="eventtextcolor"><strong><code>event.textColor</code></strong></h4>
+
+<p>(HEX String) Main text color. E.g. <code>#ffffcc</code>.</p>
+
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// change text color if temperature is higher than 80 degrees</span>
+event.textColor = 
+    event.getLastPayload() &lt; <span class="hljs-number">20</span> ? <span class="hljs-string">'#ffcccc'</span> : <span class="hljs-string">'#ffffff'</span>;</code></pre></div></body>
+</html>
