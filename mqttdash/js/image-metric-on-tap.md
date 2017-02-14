@@ -1,4 +1,4 @@
-Text metric: On Tap
+Image metric: On Tap
 ---------------------------------
 This handler called when user taps (clicks) on the tile.
 >`Note`: This handler is executed each time in `CLEAN` mode. This means, that previous call state will be cleaned up (any declared variables and functions in previous call will be purged in subsequent call)!

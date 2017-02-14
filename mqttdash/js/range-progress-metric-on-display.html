@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>text-metric-on-display</title>
+<title>range-progress-metric-on-display</title>
 <link rel="stylesheet" href="https://stackedit.io/res-min/themes/base.css" />
 <script type="text/javascript" src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=sunburst"></script>
 </head>
-<body><div class="container"><h2 id="text-metric-on-display">Text metric: On Display</h2>
+<body><div class="container"><h2 id="rangeprogress-metric-on-display">Range/progress metric: On Display</h2>
 
 <p>This handler called when tile needs to be updated. E.g. when last activity time needs to be updated or new payload received and needs to be displayed.</p>
 
@@ -92,8 +92,10 @@ event.data[<span class="hljs-string">'some flag'</span>] =
 
 <p>(Integer) Number of seconds, elapsed since last activity (since payload received):</p>
 
+
+
 <pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// blink tile to draw attention, if last payload</span>
-<span class="hljs-comment">// was received more than 60 secons ago</span>
+<span class="hljs-comment">// was received more than 60 seconds ago</span>
 event.blink = event.getSecondsSinceLastActivity() &gt; <span class="hljs-number">60</span>;</code></pre>
 
 <hr>
@@ -141,13 +143,11 @@ event.blink =
 
 
 
-<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// change text color if temperature is below 20 degrees</span>
-<span class="hljs-comment">// and display 'COLD' instead of temperature</span>
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// change progress color if temperature is below 20 degrees</span>
 <span class="hljs-keyword">if</span> (event.getLastPayload() &lt; <span class="hljs-number">20</span>) {
-    event.textColor = <span class="hljs-string">'#ffcccc'</span>;
-    event.text = <span class="hljs-string">'COLD'</span>;
+    event.progressColor = <span class="hljs-string">'#ffcccc'</span>;
 } <span class="hljs-keyword">else</span> {
-    event.textColor = <span class="hljs-string">'#ffffff'</span>;
+    event.progressColor = <span class="hljs-string">'#ffffff'</span>;
 };</code></pre>
 
 <hr>
@@ -156,19 +156,31 @@ event.blink =
 
 <h4 id="eventtext"><strong><code>event.text</code></strong></h4>
 
-<p>(String) Main tile text. You can override it. See example from above.</p>
+<p>(String) Progress text (e.g. <code>20%</code>). You can override it.</p>
 
 <hr>
 
 
 
-<h4 id="eventtextcolor"><strong><code>event.textColor</code></strong></h4>
+<h4 id="eventprogresscolor"><strong><code>event.progressColor</code></strong></h4>
 
-<p>(HEX String) Main text color. E.g. <code>#ffffcc</code>.</p>
+<p>(HEX String) Progress fill color. E.g. <code>#ffffcc</code>.</p>
+
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// change progress fill color if progress is less than 20 percents</span>
+event.progressColor = event.progress &lt; <span class="hljs-number">20</span> ? <span class="hljs-string">'#ffcccc'</span> : <span class="hljs-string">'#ffffff'</span>;</code></pre>
+
+<hr>
+
+<h4 id="eventprogress"><strong><code>event.progress</code></strong></h4>
+
+<p>(Double) Progress value (form <code>0</code> to <code>100</code>). You can override it if needed.</p>
 
 
 
-<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// change text color if temperature is higher than 80 degrees</span>
-event.textColor = 
-    event.getLastPayload() &lt; <span class="hljs-number">20</span> ? <span class="hljs-string">'#ffcccc'</span> : <span class="hljs-string">'#ffffff'</span>;</code></pre></div></body>
+<pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// change progress color if temperature is below 20 degrees</span>
+<span class="hljs-keyword">if</span> (event.progress &lt; <span class="hljs-number">20</span>) {
+    event.progressColor = <span class="hljs-string">'#ffcccc'</span>;
+} <span class="hljs-keyword">else</span> {
+    event.progressColor = <span class="hljs-string">'#ffffff'</span>;
+};</code></pre></div></body>
 </html>

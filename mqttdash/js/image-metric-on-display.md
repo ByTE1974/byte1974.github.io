@@ -1,4 +1,4 @@
-Text metric: On Display
+Image metric: On Display
 ---------------------------------
 This handler called when tile needs to be updated. E.g. when last activity time needs to be updated or new payload received and needs to be displayed.
 >`Note`: This handler called only for visible tiles. If tile scrolled away, this handler will not be called.
@@ -65,7 +65,7 @@ if (event.data['some flag']) {
 
 ```js
 // blink tile to draw attention, if last payload
-// was received more than 60 secons ago
+// was received more than 60 seconds ago
 event.blink = event.getSecondsSinceLastActivity() > 60;
 ```
 
@@ -84,12 +84,10 @@ event.lastActivityString =
 
 ####**`event.blink`**
 
-(Boolean) Tile will blink if value of the property is `true`. Example:
+(Boolean) Image will blink if value of the property is `true`. Example:
 
 ```js
-// blink tile if temperature out of range
-event.blink =
-	(event.getLastPayload() < 20 || event.getLastPayload() > 40);
+event.blink = true;
 ```
 
 ---
@@ -102,33 +100,28 @@ event.blink =
 
 ####**`event.getLastPayload()`**
 
-(String) Returns last received raw payload. Raw means, that prefix, postfix and any other payload transformations not applied yet (if configured).
+(String) Returns last received raw payload (image URL). Returns empty string if:
+1. Static image URL defined in metric settings
+2. Raw image file data received in payload
+
+So, this method returns meaningful value only if URL received in payload
+
+---
+
+####**`event.url`**
+
+(String) Image URL. Has value only if you have specified static image URL in the settings, or if image URL received as payload. But if image received as raw file data in payload, this property returns empty string.
+You can override value of the property, e.g. to display different weather icons:
 
 ```js
-// change text color if temperature is below 20 degrees
-// and display 'COLD' instead of temperature
-if (event.getLastPayload() < 20) {
-	event.textColor = '#ffcccc';
-	event.text = 'COLD';
+// change image URL depending on received payload
+if (event.getLastPayload() == 'sunny') {
+	event.url = 'https://exapmle.com/sunny.png';
+} else if (event.getLastPayload() == 'cloudy') {
+	event.url = 'https://exapmle.com/cloudy.png';
+} else if (event.getLastPayload() == 'rainy') {
+	event.url = 'https://exapmle.com/rainy.png';
 } else {
-	event.textColor = '#ffffff';
-};
-```
-
----
-
-####**`event.text`**
-
-(String) Main tile text. You can override it. See example from above.
-
----
-
-####**`event.textColor`**
-
-(HEX String) Main text color. E.g. `#ffffcc`.
-
-```js
-// change text color if temperature is higher than 80 degrees
-event.textColor = 
-	event.getLastPayload() < 20 ? '#ffcccc' : '#ffffff';
+	event.url = 'https://exapmle.com/zomby.png';
+}
 ```

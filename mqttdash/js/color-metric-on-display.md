@@ -1,4 +1,4 @@
-Text metric: On Display
+Color metric: On Display
 ---------------------------------
 This handler called when tile needs to be updated. E.g. when last activity time needs to be updated or new payload received and needs to be displayed.
 >`Note`: This handler called only for visible tiles. If tile scrolled away, this handler will not be called.
@@ -65,7 +65,7 @@ if (event.data['some flag']) {
 
 ```js
 // blink tile to draw attention, if last payload
-// was received more than 60 secons ago
+// was received more than 60 seconds ago
 event.blink = event.getSecondsSinceLastActivity() > 60;
 ```
 
@@ -86,12 +86,6 @@ event.lastActivityString =
 
 (Boolean) Tile will blink if value of the property is `true`. Example:
 
-```js
-// blink tile if temperature out of range
-event.blink =
-	(event.getLastPayload() < 20 || event.getLastPayload() > 40);
-```
-
 ---
 
 ####**`event.name`**
@@ -102,33 +96,10 @@ event.blink =
 
 ####**`event.getLastPayload()`**
 
-(String) Returns last received raw payload. Raw means, that prefix, postfix and any other payload transformations not applied yet (if configured).
-
-```js
-// change text color if temperature is below 20 degrees
-// and display 'COLD' instead of temperature
-if (event.getLastPayload() < 20) {
-	event.textColor = '#ffcccc';
-	event.text = 'COLD';
-} else {
-	event.textColor = '#ffffff';
-};
-```
+(String) Returns last received raw payload.
 
 ---
 
-####**`event.text`**
+####**`event.color`**
 
-(String) Main tile text. You can override it. See example from above.
-
----
-
-####**`event.textColor`**
-
-(HEX String) Main text color. E.g. `#ffffcc`.
-
-```js
-// change text color if temperature is higher than 80 degrees
-event.textColor = 
-	event.getLastPayload() < 20 ? '#ffcccc' : '#ffffff';
-```
+(HEX String) Main icon color. E.g. `#ffffcc`. Can be changed.

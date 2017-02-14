@@ -1,7 +1,8 @@
-Text metric: On Tap
+Color metric: On Receive
 ---------------------------------
-This handler called when user taps (clicks) on the tile.
->`Note`: This handler is executed each time in `CLEAN` mode. This means, that previous call state will be cleaned up (any declared variables and functions in previous call will be purged in subsequent call)!
+This handler called when payload received for the metric.
+It has nothing to do with visual representation and usually used to handle received data `BEFORE` visual state will be updated.
+>`Note`: This handler is executed each time in `CLEAN` mode. This means, that previous call state will be cleaned up (any declared variables and functions from previous call will be purged in subsequent call)!
 To pass data between calls and handlers use `event.data`.
 
 ### In this handler you can use the following:
@@ -11,7 +12,7 @@ To pass data between calls and handlers use `event.data`.
 Publish `payload` (String) to `topic` (String) with specified `retained` flag (Boolean) and `qos` (Integer). Example:
 
 ```js
-app.publish('messages/alert', 'HOT', false, 0);
+app.publish('led/color', '#ffffff', false, 0);
 ```
 
 ---
@@ -22,6 +23,7 @@ Open specified `uri` (String) in an external app. `uri` examples:
 - `http://www.example.com/page.html`
 - `tel:123`
 - `content://contacts/people/`
+>Usually you don't want to use it in `On Receive` handler, because `On Receive` executed every time, when payload received.
 
 ```js
 app.openUri('http://www.example.com');
@@ -56,14 +58,21 @@ if (event.data['some flag']) {
 
 ---
 
-####**`event.preventDefault`**
+####**`event.payload`**
 
-(Boolean) `False` by default. If True, default tap event behaviour will be disabled.
+(String) Received raw payload string. You can modify or transform it before it'll be processed and displayed. For example, you can do the following:
+
+---
+
+####**`event.topic`**
+
+(String) Topic, from which payload was received. Use it to distinguish topics in case of using wildcards in your topic (e.g. `#` or `+`). Example:
 
 ```js
-// prevent default event handler call and publish message
-event.preventDefault = true;
-if (event.data['some flag']) {
-    app.publish('messages/alert', JSON.stringify(event.data), false, 0);
+// if you have configured subscription topic like 'ledlamp/+/set'
+if (event.topic == 'ledlamp/kitchen/set') {
+    // do something
+} else {
+    // do something other
 }
 ```

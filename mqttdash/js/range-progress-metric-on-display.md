@@ -1,4 +1,4 @@
-Text metric: On Display
+Range/progress metric: On Display
 ---------------------------------
 This handler called when tile needs to be updated. E.g. when last activity time needs to be updated or new payload received and needs to be displayed.
 >`Note`: This handler called only for visible tiles. If tile scrolled away, this handler will not be called.
@@ -65,7 +65,7 @@ if (event.data['some flag']) {
 
 ```js
 // blink tile to draw attention, if last payload
-// was received more than 60 secons ago
+// was received more than 60 seconds ago
 event.blink = event.getSecondsSinceLastActivity() > 60;
 ```
 
@@ -105,13 +105,11 @@ event.blink =
 (String) Returns last received raw payload. Raw means, that prefix, postfix and any other payload transformations not applied yet (if configured).
 
 ```js
-// change text color if temperature is below 20 degrees
-// and display 'COLD' instead of temperature
+// change progress color if temperature is below 20 degrees
 if (event.getLastPayload() < 20) {
-	event.textColor = '#ffcccc';
-	event.text = 'COLD';
+	event.progressColor = '#ffcccc';
 } else {
-	event.textColor = '#ffffff';
+	event.progressColor = '#ffffff';
 };
 ```
 
@@ -119,16 +117,30 @@ if (event.getLastPayload() < 20) {
 
 ####**`event.text`**
 
-(String) Main tile text. You can override it. See example from above.
+(String) Progress text (e.g. `20%`). You can override it.
 
 ---
 
-####**`event.textColor`**
+####**`event.progressColor`**
 
-(HEX String) Main text color. E.g. `#ffffcc`.
+(HEX String) Progress fill color. E.g. `#ffffcc`.
 
 ```js
-// change text color if temperature is higher than 80 degrees
-event.textColor = 
-	event.getLastPayload() < 20 ? '#ffcccc' : '#ffffff';
+// change progress fill color if progress is less than 20 percents
+event.progressColor = event.progress < 20 ? '#ffcccc' : '#ffffff';
+```
+
+---
+
+####**`event.progress`**
+
+(Double) Progress value (form `0` to `100`). You can override it if needed.
+
+```js
+// change progress color if temperature is below 20 degrees
+if (event.progress < 20) {
+	event.progressColor = '#ffcccc';
+} else {
+	event.progressColor = '#ffffff';
+};
 ```

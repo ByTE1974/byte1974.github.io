@@ -1,4 +1,4 @@
-Text metric: On Display
+Multi-choice metric: On Display
 ---------------------------------
 This handler called when tile needs to be updated. E.g. when last activity time needs to be updated or new payload received and needs to be displayed.
 >`Note`: This handler called only for visible tiles. If tile scrolled away, this handler will not be called.
@@ -65,7 +65,7 @@ if (event.data['some flag']) {
 
 ```js
 // blink tile to draw attention, if last payload
-// was received more than 60 secons ago
+// was received more than 60 seconds ago
 event.blink = event.getSecondsSinceLastActivity() > 60;
 ```
 
