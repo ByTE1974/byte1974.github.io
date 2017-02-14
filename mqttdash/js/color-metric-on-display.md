@@ -84,7 +84,7 @@ event.lastActivityString =
 
 ####**`event.blink`**
 
-(Boolean) Tile will blink if value of the property is `true`. Example:
+(Boolean) Tile will blink if value of the property is `true`.
 
 ---
 
