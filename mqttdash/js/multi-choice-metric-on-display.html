@@ -13,7 +13,7 @@
 
 <blockquote>
   <p><code>Note</code>: This handler called only for visible tiles. If tile scrolled away, this handler will not be called. <br>
-  <code>Important</code>:  this handler is executed each time in <code>CLEAN</code> mode. This means, that previous call state will be cleaned up (any declared variables and functions in previous call will be purged in subsequent call)! <br>
+  <code>Important</code>:  this handler is executed each time in <code>CLEAN</code> mode. This means, that previous call state will be cleaned up (any declared variables and functions from previous call will be purged in subsequent call)! <br>
   To pass data between calls and handlers use <code>event.data</code>.</p>
 </blockquote>
 
@@ -69,8 +69,7 @@ The data shared between <code>On Receive</code>, <code>On Display</code>, <code>
 <pre class="prettyprint"><code class="language-js hljs "><span class="hljs-keyword">if</span> (!event.data) {
     event.data = {};
 }
-event.data[<span class="hljs-string">'some flag'</span>] = 
-    (event.payload == <span class="hljs-string">'something'</span> ? <span class="hljs-literal">true</span> : <span class="hljs-literal">false</span>);</code></pre>
+event.data[<span class="hljs-string">'some flag'</span>] = (event.payload == <span class="hljs-string">'something'</span> ? <span class="hljs-literal">true</span> : <span class="hljs-literal">false</span>);</code></pre>
 
 <p>In <code>On Display</code> or in <code>On Tap</code> handler:</p>
 

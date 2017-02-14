@@ -13,11 +13,9 @@
 
 <blockquote>
   <p><code>Note</code>: This handler called only for visible tiles. If tile scrolled away, this handler will not be called. <br>
-  <code>Important</code>:  this handler is executed each time in <code>CLEAN</code> mode. This means, that previous call state will be cleaned up (any declared variables and functions in previous call will be purged in subsequent call)! <br>
+  <code>Important</code>:  this handler is executed each time in <code>CLEAN</code> mode. This means, that previous call state will be cleaned up (any declared variables and functions from previous call will be purged in subsequent call)! <br>
   To pass data between calls and handlers use <code>event.data</code>.</p>
 </blockquote>
-
-
 
 <h3 id="in-this-handler-you-can-use-the-following">In this handler you can use the following:</h3>
 
@@ -166,10 +164,14 @@ event.blink =
 
 <p>(HEX String) Progress fill color. E.g. <code>#ffffcc</code>.</p>
 
+
+
 <pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// change progress fill color if progress is less than 20 percents</span>
 event.progressColor = event.progress &lt; <span class="hljs-number">20</span> ? <span class="hljs-string">'#ffcccc'</span> : <span class="hljs-string">'#ffffff'</span>;</code></pre>
 
 <hr>
+
+
 
 <h4 id="eventprogress"><strong><code>event.progress</code></strong></h4>
 

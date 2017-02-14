@@ -2,7 +2,7 @@ Text metric: On Display
 ---------------------------------
 This handler called when tile needs to be updated. E.g. when last activity time needs to be updated or new payload received and needs to be displayed.
 >`Note`: This handler called only for visible tiles. If tile scrolled away, this handler will not be called.
-`Important`:  this handler is executed each time in `CLEAN` mode. This means, that previous call state will be cleaned up (any declared variables and functions in previous call will be purged in subsequent call)!
+`Important`:  this handler is executed each time in `CLEAN` mode. This means, that previous call state will be cleaned up (any declared variables and functions from previous call will be purged in subsequent call)!
 To pass data between calls and handlers use `event.data`.
 
 ### In this handler you can use the following:
@@ -65,7 +65,7 @@ if (event.data['some flag']) {
 
 ```js
 // blink tile to draw attention, if last payload
-// was received more than 60 secons ago
+// was received more than 60 seconds ago
 event.blink = event.getSecondsSinceLastActivity() > 60;
 ```
 
