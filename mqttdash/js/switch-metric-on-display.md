@@ -1,4 +1,4 @@
-Switch metric: On Display
+Switch/button metric: On Display
 ---------------------------------
 This handler called when tile needs to be updated. E.g. when last activity time needs to be updated or new payload received and needs to be displayed.
 >`Note`: This handler called only for visible tiles. If tile scrolled away, this handler will not be called.
