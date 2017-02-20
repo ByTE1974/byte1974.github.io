@@ -128,7 +128,7 @@ if (event.getLastPayload() < 20) {
 (HEX String) Main text color. E.g. `#ffffcc`.
 
 ```js
-// change text color if temperature is higher than 80 degrees
+// change text color if temperature is less than 20 degrees
 event.textColor = 
 	event.getLastPayload() < 20 ? '#ffcccc' : '#ffffff';
 ```

@@ -129,5 +129,5 @@ if (event.getLastPayload() < 20) {
 ```js
 // change text color if temperature is higher than 80 degrees
 event.textColor = 
-	event.getLastPayload() < 20 ? '#ffcccc' : '#ffffff';
+	event.getLastPayload() > 80 ? '#ffcccc' : '#ffffff';
 ```

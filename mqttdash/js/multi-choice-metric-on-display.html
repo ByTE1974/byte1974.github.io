@@ -75,6 +75,8 @@ event.data[<span class="hljs-string">'some flag'</span>] = (event.getLastPayload
 
 <p>In <code>On Display</code> or in <code>On Tap</code> handler:</p>
 
+
+
 <pre class="prettyprint"><code class="language-js hljs "><span class="hljs-keyword">if</span> (event.data[<span class="hljs-string">'some flag'</span>]) {
     <span class="hljs-comment">// do something</span>
 } <span class="hljs-keyword">else</span> {
@@ -169,5 +171,5 @@ event.blink =
 
 <pre class="prettyprint"><code class="language-js hljs "><span class="hljs-comment">// change text color if temperature is higher than 80 degrees</span>
 event.textColor = 
-    event.getLastPayload() &lt; <span class="hljs-number">20</span> ? <span class="hljs-string">'#ffcccc'</span> : <span class="hljs-string">'#ffffff'</span>;</code></pre></div></body>
+    event.getLastPayload() &gt; <span class="hljs-number">80</span> ? <span class="hljs-string">'#ffcccc'</span> : <span class="hljs-string">'#ffffff'</span>;</code></pre></div></body>
 </html>
