@@ -44,7 +44,7 @@ if (!event.data) {
     event.data = {};
 }
 event.data['some flag'] = 
-	(event.payload == 'something' ? true : false);
+	(event.getLastPayload() == 'something' ? true : false);
 ```
 
 In `On Display` or in `On Tap` handler:

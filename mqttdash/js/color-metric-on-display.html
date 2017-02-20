@@ -17,6 +17,8 @@
   To pass data between calls and handlers use <code>event.data</code>.</p>
 </blockquote>
 
+
+
 <h3 id="in-this-handler-you-can-use-the-following">In this handler you can use the following:</h3>
 
 
@@ -70,11 +72,9 @@ The data shared between <code>On Receive</code>, <code>On Display</code>, <code>
     event.data = {};
 }
 event.data[<span class="hljs-string">'some flag'</span>] = 
-    (event.payload == <span class="hljs-string">'something'</span> ? <span class="hljs-literal">true</span> : <span class="hljs-literal">false</span>);</code></pre>
+    (event.getLastPayload() == <span class="hljs-string">'something'</span> ? <span class="hljs-literal">true</span> : <span class="hljs-literal">false</span>);</code></pre>
 
 <p>In <code>On Display</code> or in <code>On Tap</code> handler:</p>
-
-
 
 <pre class="prettyprint"><code class="language-js hljs "><span class="hljs-keyword">if</span> (event.data[<span class="hljs-string">'some flag'</span>]) {
     <span class="hljs-comment">// do something</span>
@@ -118,6 +118,8 @@ event.blink = event.getSecondsSinceLastActivity() &gt; <span class="hljs-number"
 <p>(Boolean) Tile will blink if value of the property is <code>true</code>.</p>
 
 <hr>
+
+
 
 <h4 id="eventname"><strong><code>event.name</code></strong></h4>
 

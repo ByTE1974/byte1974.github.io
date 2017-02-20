@@ -17,6 +17,8 @@
   To pass data between calls and handlers use <code>event.data</code>.</p>
 </blockquote>
 
+
+
 <h3 id="in-this-handler-you-can-use-the-following">In this handler you can use the following:</h3>
 
 
@@ -69,11 +71,9 @@ The data shared between <code>On Receive</code>, <code>On Display</code>, <code>
 <pre class="prettyprint"><code class="language-js hljs "><span class="hljs-keyword">if</span> (!event.data) {
     event.data = {};
 }
-event.data[<span class="hljs-string">'some flag'</span>] = (event.payload == <span class="hljs-string">'something'</span> ? <span class="hljs-literal">true</span> : <span class="hljs-literal">false</span>);</code></pre>
+event.data[<span class="hljs-string">'some flag'</span>] = (event.getLastPayload() == <span class="hljs-string">'something'</span> ? <span class="hljs-literal">true</span> : <span class="hljs-literal">false</span>);</code></pre>
 
 <p>In <code>On Display</code> or in <code>On Tap</code> handler:</p>
-
-
 
 <pre class="prettyprint"><code class="language-js hljs "><span class="hljs-keyword">if</span> (event.data[<span class="hljs-string">'some flag'</span>]) {
     <span class="hljs-comment">// do something</span>
